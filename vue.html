@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <title>Hello, world!</title>
+  <style type="text/css">
+
+  </style>
+</head>
+<body>
+  <div class="container-fluid" id="app" style="margin-top:30px;">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">OrderDate</th>
+          <th scope="col">UserID</th>
+          <th scope="col">Name</th>
+          <th scope="col">address</th>
+          <th scope="col">Tel</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  v-for="user in users">
+          <th scope="row">
+            <p >{{user.OrderID}}</p>
+          </th>
+          <td>
+            <p>{{user.OrderDate}}</p>
+          </td>
+          <td>
+            <p>{{user.UserID}}</p>
+          </td>
+          <td @dblclick="beforeUpdate(user)">
+            <p v-if="user!=edit">{{user.Name}}</p>
+            <input v-else type="text" name="" class="form-control"   v-model="itemName">
+          </td>
+          <td>
+           <p v-if="user!=edit"> {{user.Address}}</p>
+           <input v-else type="text" name="" class="form-control"   v-model="itemAddress">
+         </td>
+         <td>
+           <P v-if="user!=edit"> {{user.Tel}}</P>
+           <input v-else type="text" name="" class="form-control"   v-model="itemTel">
+         </td>
+
+         <td v-if="user!=edit"><button class="btn btn-warning"  @click="beforeUpdate(user)" >EDIT</button></td>
+         <td v-else><button class="btn btn-danger"  @click="CancelUpdate()" >Cancel</button></td>
+
+         <td v-if="user!=edit"><button class="btn btn-danger" @click="deleteItem(user)">DELETE</button></td>
+         <td v-else><button class="btn btn-warning" @click="deleteItem(user)">UPDATE</button></td>
+       </tr>
+
+     </tbody>
+   </table>
+   <HR>
+   <div class="container">
+    <h1>Add information</h1>
+    Name: <input type="text" name="" class="form-control"  v-model="firstName">
+    Address: <input type="text" name="" class="form-control" v-model="address">
+    <BR>
+    <button class="btn btn-success" @click="createItem">ADD</button>
+  </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="script.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
